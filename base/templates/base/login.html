@@ -1,5 +1,11 @@
 <h1>Login</h1>
+<a href="{% url 'task-list' %}">Retour à l'accueil</a>
 <form action="" method="POST">
-  {% csrf_token %} {{ form }}
+  {% csrf_token %} {{ form.as_p }}
   <input type="submit" value="login" />
 </form>
+
+<p>
+  Vous n'avez pas de compte ?
+  <a href="{% url 'task-register' %}">S'enregistrer</a>
+</p>

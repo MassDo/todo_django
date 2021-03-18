@@ -9,7 +9,7 @@
   <body>
     {% if request.user.is_authenticated %}
     <p>{{ request.user }}</p>
-    <a href="">Se déconnecter</a>
+    <a href="{% url 'task-logout' %}">Se déconnecter</a>
     {% else %}
     <p><a href="{% url 'task-login' %}">Veuillez vous connecter</a></p>
     {% endif %}
@@ -17,6 +17,14 @@
     <hr />
 
     <a href="{% url 'task-create' %}"> Ajouter un nouvel item ?!</a>
+
+    {% if counter %}
+    <h1>vous avez {{ counter }} tâches à faire !</h1>
+    {% else %}
+    <p>pas de tâche à faire vous êtes tranquille !</p>
+
+    {% endif %}
+
     <table>
       <tr>
         <th>Item</th>
