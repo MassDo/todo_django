@@ -7,7 +7,8 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="{% url 'task-create' %}" method="POST">
+    <a href="{% url 'task-list' %}">Retour accueil</a>
+    <form action="" method="POST">
       {% csrf_token %} {{ form.as_p }}
       <input type="submit" value="Submit" />
     </form>

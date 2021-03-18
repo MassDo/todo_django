@@ -7,17 +7,30 @@
     <title>Document</title>
   </head>
   <body>
+    {% if request.user.is_authenticated %}
+    <p>{{ request.user }}</p>
+    <a href="">Se déconnecter</a>
+    {% else %}
+    <p><a href="{% url 'task-login' %}">Veuillez vous connecter</a></p>
+    {% endif %}
+
+    <hr />
+
     <a href="{% url 'task-create' %}"> Ajouter un nouvel item ?!</a>
     <table>
       <tr>
         <th>Item</th>
+        <th></th>
+        <th></th>
         <th></th>
       </tr>
 
       {% for task in tasks %}
       <tr>
         <td>{{ task.title }}</td>
-        <td><a href="{% url 'task-detail' task.id %}">detail ici</a></td>
+        <td><a href="{% url 'task-detail' task.id %}">Detail </a></td>
+        <td><a href="{% url 'task-update' task.id %}">Changer </a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Supprimer </a></td>
       </tr>
       {% empty %}
       <tr>
